@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 namespace DaleranGames.IO
 {
@@ -33,14 +34,51 @@ namespace DaleranGames.IO
             data = ParseOneHeader(rawData);
         }
 
-        public CSVData(string name, string filepath, List<string> multipleHeaders)
+        public static List<CSVData> ParseMultipleCSVSheet(List<string> names, string filepath)
+        {
+            List<CSVData> dataset = new List<CSVData>();
+            List<string[]> csvArray = CSVUtility.ParseCSVToArray(File.ReadAllText(filepath));
+            List<List<string[]>> datasets = new List<List<string[]>>();
+            bool headerNext = false;
+            int datasetIndex = -1;
+
+            //Split the raw string array into sets of strings
+            for (int i = 0; i < csvArray.Count; i++)
+            {
+                if (names.Contains(csvArray[i][0]))
+                {
+                    headerNext = true;
+                    datasetIndex++;
+                }
+                else if (headerNext == true)
+                {
+                    datasets.Add(new List<string[]>());
+                    datasets[datasetIndex].Add(csvArray[i]);
+                    headerNext = false;
+                }
+                else
+                {
+                    datasets[datasetIndex].Add(csvArray[i]);
+                }
+            }
+
+            //GO through each CSV set from the previos loop and convert it into CSV Data
+            for (int i = 0; i < datasets.Count; i++)
+            {
+                dataset.Add(new CSVData(names[i], datasets[i]));
+            }
+
+            return dataset;
+        }
+
+        public CSVData(string name, List<string[]> raw)
         {
             Name = name;
-            rawData = CSVUtility.ParseCSVToArray(File.ReadAllText(filepath));
-            data = ParseMultipleHeaders(rawData, multipleHeaders);
+            rawData = raw;
+            data = ParseOneHeader(raw);
         }
         
-        Dictionary<string, CSVEntry> ParseOneHeader (List<string[]> csvArray)
+        static Dictionary<string, CSVEntry> ParseOneHeader (List<string[]> csvArray)
         {
             string[] header = csvArray[0];
             Dictionary<string, CSVEntry> newEntries = new Dictionary<string, CSVEntry>();
@@ -53,31 +91,7 @@ namespace DaleranGames.IO
             return newEntries;
         }
 
-        Dictionary<string, CSVEntry> ParseMultipleHeaders(List<string[]> csvArray, List<string> multipleHeaders)
-        {
-            string[] header = csvArray[1];
-            bool headerNext = false;
-
-            Dictionary<string, CSVEntry> newEntries = new Dictionary<string, CSVEntry>();
-
-            for (int i = 0; i < csvArray.Count; i++)
-            {
-                if (multipleHeaders.Contains(csvArray[i][0]))
-                {
-                    headerNext = true;
-                } else if (headerNext == true)
-                {
-                    header = csvArray[i];
-                    headerNext = false;
-                } else
-                {
-                    newEntries.Add(csvArray[i][0],new CSVEntry(PadJAggedStringArray(header, csvArray[i]), header));
-                }
-            }
-            return newEntries;
-        }
-
-        string[] PadJAggedStringArray(string[] header, string[] entry)
+        static string[] PadJAggedStringArray(string[] header, string[] entry)
         {
             if (header.Length == entry.Length)
                 return entry;
@@ -85,6 +99,22 @@ namespace DaleranGames.IO
             string[] newEntry = new string[header.Length];
             entry.CopyTo(newEntry, 0);
             return newEntry;
+        }
+
+        public void Print()
+        {
+            Debug.Log("CSVData: " + Name);
+
+            for (int i = 0; i < RawData.Count; i++)
+            {
+                string line = "";
+                for (int j = 0; j < RawData[i].Length; j++)
+                {
+                    line += RawData[i][j]+"\t";
+                }
+                Debug.Log(line);
+            }
+
         }
     }
 }

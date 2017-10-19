@@ -11,24 +11,21 @@ namespace DaleranGames.Testing
         void PrintSingleHeader()
         {
             CSVData csv = new CSVData("Single", Application.dataPath + "/DalLib/Core/Testing/CSV/singleHeader.txt");
-
-            foreach (CSVEntry ent in csv.Entries)
-            {
-                Debug.Log(ent.ID);
-
-                foreach (KeyValuePair<string,string> val in ent.Data)
-                {
-                    Debug.Log(val.Key + ": " + val.Value);
-                }
-
-            }
+            csv.Print();
         }
 
         [ContextMenu("Print Multiple Header CSV")]
         void PrintMultipleHeader()
         {
+            List<CSVData> csv = CSVData.ParseMultipleCSVSheet(new List<string>() {"Type1","Type2"}, Application.dataPath + "/DalLib/Core/Testing/CSV/multipleHeader.txt");
 
+            foreach(CSVData dat in csv)
+            {
+                dat.Print();
+            }
+            
         }
+
     }
 }
 
