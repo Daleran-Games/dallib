@@ -12,5 +12,10 @@ namespace DaleranGames.UI
         {
             SceneManager.LoadScene(sceneIndex);
         }
+
+        public void LoadByName(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 }
