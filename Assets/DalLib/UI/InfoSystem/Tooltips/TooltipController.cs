@@ -52,7 +52,7 @@ namespace DaleranGames.UI
 
         void CheckTooltipAnchors()
         {
-            Vector3 mousePos = MouseCursor.Instance.Position;
+            Vector3 mousePos = MouseCursor.Instance.ScreenPosition;
             float screenHalfX = Screen.width - tooltipRect.rect.width;
             float screenHalfY = tooltipRect.rect.height * 1.5f;
 

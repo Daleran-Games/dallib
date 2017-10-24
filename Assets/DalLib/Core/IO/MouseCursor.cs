@@ -23,13 +23,10 @@ namespace DaleranGames.IO
         [SerializeField]
         bool toggleHardwareCursor = false;
 
-        [SerializeField]
-        Vector3 position;  //For DEBUG only!!
-        public Vector3 Position { get { return position; } }
 
         [SerializeField]
-        Vector3 worldPosition; //For DEBUG only!!
-        public Vector3 WorldPosition { get { return worldPosition; } }
+        Vector3 position;  //For DEBUG only!!
+        public Vector3 ScreenPosition { get { return position; } }
 
         public MouseEvent LMBClick;
         public MouseEvent RMBClick;
@@ -67,7 +64,6 @@ namespace DaleranGames.IO
         {
             transform.position = ClampToWindow(pos);
             position = transform.position;
-            worldPosition = Camera.main.ScreenToWorldPoint(position);
         }
 
         Vector3 ClampToWindow(Vector3 newPos)
@@ -89,7 +85,7 @@ namespace DaleranGames.IO
         }
 
 
-        public void ToggleCursor (bool state)
+        public void ToggleCursorSprite (bool state)
         {
             if (state == true)
                 sprite.enabled = true;
@@ -102,12 +98,12 @@ namespace DaleranGames.IO
             if (state == true)
             {
                 Cursor.visible = true;
-                ToggleCursor(false);
+                ToggleCursorSprite(false);
             }
             else
             {
                 Cursor.visible = false;
-                ToggleCursor(true);
+                ToggleCursorSprite(true);
             }
         }
 

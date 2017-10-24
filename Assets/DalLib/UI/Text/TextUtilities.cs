@@ -17,6 +17,21 @@
                 return "<style=\"NegColor\">" + text + "</style>";
         }
 
+        public static string ColorBasedOnNumber(string text, float number, bool withPlus)
+        {
+            if (number > 0)
+            {
+                if (withPlus)
+                    return "<style=\"PosColor\">+" + text + "</style>";
+                else
+                    return "<style=\"PosColor\">" + text + "</style>";
+            }
+            else if (number == 0)
+                return text;
+            else
+                return "<style=\"NegColor\">" + text + "</style>";
+        }
+
         public static string ToPositiveColor(this string text)
         {
             return "<style=\"PosColor\">" + text + "</style>";
