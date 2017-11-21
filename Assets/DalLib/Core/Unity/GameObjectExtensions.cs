@@ -44,23 +44,6 @@ namespace UnityEngine
             return component;
         }
 
-        public static Transform ClearChildren (this Transform transform)
-        {
-            foreach (Transform child in transform)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-            return transform;
-        }
-
-        public static RectTransform ClearChildren (this RectTransform rectTransform)
-        {
-            foreach (RectTransform child in rectTransform)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-            return rectTransform;
-        }
 
         public static Vector3 WorldToCanvasPoint (this Camera camera, RectTransform canvasRect ,Vector3 objectPosition)
         {
@@ -87,22 +70,9 @@ namespace UnityEngine
                 return false;
         }
 
-        public static void SetRectTransformAnchorsAndPivot (this RectTransform rectTrans, Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot)
-        {
-            rectTrans.anchorMin = anchorMin;
-            rectTrans.anchorMax = anchorMax;
-            rectTrans.pivot = pivot;
-        }
 
-        public static Vector3 VectorToPoint(this Transform trans, Vector3 point)
-        {
-            return point - trans.position;
-        }
 
-        public static float DistanceToPoint(this Transform trans, Vector3 point)
-        {
-            return trans.VectorToPoint(point).magnitude;
-        }
+
 
     }
 }

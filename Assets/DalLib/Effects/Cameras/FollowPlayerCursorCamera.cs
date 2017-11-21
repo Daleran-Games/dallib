@@ -36,7 +36,7 @@ namespace DaleranGames.Effects
         void TrackTarget()
         {
 
-            // Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // Vector2 mousePos = MainCamera.Instance.ScreenToWorldPoint(Input.mousePosition);
             //Vector2 targetPosition = (Vector2)player.position + (( mousePos - (Vector2)player.position).normalized * maxRange);
             //Vector3 newPos = Vector3.MoveTowards(player.transform.position, mousePos, maxRange);
             //Vector3 newPos = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, dampTime);

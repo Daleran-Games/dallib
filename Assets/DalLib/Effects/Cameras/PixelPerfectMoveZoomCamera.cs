@@ -5,52 +5,20 @@ using UnityEngine;
 namespace DaleranGames.Effects
 {
     [RequireComponent(typeof(Camera))]
-    public class PixelPerfectMoveZoomCamera : MonoBehaviour
+    public class PixelPerfectMoveZoomCamera : PixelPerfectZoomCamera
     {
-        [SerializeField]
-        protected int pixelsPerUnit = 32;
-        [SerializeField]
-        [Range(1, 8)]
-        protected int maxScale = 2;
-
+        [Header("Move Settings")]
         [SerializeField]
         protected float panSpeed = 15f;
         [SerializeField]
         protected float panBorderThickness = 20f;
-
         [SerializeField]
-        protected Vector2 bottomLeftExtent = Vector2.zero;
-
+        protected bool clampToBoundingArea = false;
         [SerializeField]
-        protected Vector2 topRightExtent = new Vector2(10f, 10f);
+        protected Rect boundingArea = new Rect(0f, 0f, 10f, 10f);
 
-        protected Camera cam;
-        [SerializeField]
-        protected float[] orthoSizes;
-        [SerializeField]
-        protected int sizeIndex = 0;
-        public virtual int SizeIndex
-        {
-            get { return sizeIndex; }
-            protected set
-            {
-                sizeIndex = value;
 
-                if (CameraZoomChange != null)
-                    CameraZoomChange(sizeIndex);
-            }
-        }
-        public event System.Action<int> CameraZoomChange;
-
-        protected virtual void Start()
-        {
-            cam = gameObject.GetRequiredComponent<Camera>();
-            orthoSizes = BuildSizeArray();
-            cam.orthographicSize = orthoSizes[sizeIndex];
-
-        }
-
-        protected virtual void LateUpdate()
+        protected override void LateUpdate()
         {
             Vector2 moveDir = new Vector2();
 
@@ -63,52 +31,16 @@ namespace DaleranGames.Effects
             if (Input.GetAxis("Vertical") < 0 || Input.mousePosition.y < panBorderThickness)
                 moveDir.y = -panSpeed;
 
-
             Vector3 newPosition = transform.position + (Vector3)moveDir.normalized * panSpeed * Time.deltaTime;
-            newPosition.x = Mathf.Clamp(newPosition.x, bottomLeftExtent.x, topRightExtent.x);
-            newPosition.y = Mathf.Clamp(newPosition.y, bottomLeftExtent.y, topRightExtent.y);
+
+            if (clampToBoundingArea)
+            {
+                newPosition.x = Mathf.Clamp(newPosition.x, boundingArea.xMin, boundingArea.xMax);
+                newPosition.y = Mathf.Clamp(newPosition.y, boundingArea.yMin, boundingArea.yMax);
+            }
 
             transform.position = newPosition;
-
-            if (Input.GetAxis("Mouse ScrollWheel") > 0)
-                ZoomCameraIn();
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-                ZoomCameraOut();
-        }
-
-        protected virtual void ZoomCameraIn()
-        {
-            if (SizeIndex < maxScale-1)
-            {
-                SizeIndex++;
-                cam.orthographicSize = orthoSizes[sizeIndex];
-            }
-        }
-
-        protected virtual void ZoomCameraOut()
-        {
-            if (SizeIndex > 0)
-            {
-                SizeIndex--;
-                cam.orthographicSize = orthoSizes[sizeIndex];
-            }
-        }
-
-        protected virtual float CalculateOrthographicSize (int scale)
-        {
-            return (((float)Screen.height)/((float)scale * (float)pixelsPerUnit)) * 0.5f;
-        }
-
-        protected virtual float[] BuildSizeArray ()
-        {
-            float[] sizes = new float[maxScale];
-
-            for (int i=0; i < sizes.Length; i++)
-            {
-                sizes[i] = CalculateOrthographicSize(i + 1);
-            }
-
-            return sizes;
+            base.LateUpdate();
         }
 
     }
