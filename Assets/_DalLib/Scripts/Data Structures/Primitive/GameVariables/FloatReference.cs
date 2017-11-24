@@ -1,31 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 namespace DaleranGames
 {
-    [System.Serializable]
     public class FloatReference
     {
         [SerializeField]
-        bool UseConstant = true;
+        bool useConstant = true;
         [SerializeField]
-        float ConstantValue;
+        float constantValue;
         [SerializeField]
-        FloatVariable Variable;
+        FloatVariable variable;
 
         public FloatReference()
         { }
 
         public FloatReference(float value)
         {
-            UseConstant = true;
-            ConstantValue = value;
+            useConstant = true;
+            constantValue = value;
         }
 
         public float Value
         {
-            get { return UseConstant ? ConstantValue : Variable.Value; }
+            get { return useConstant ? constantValue : variable.Value; }
+            set { if (useConstant) constantValue = value; else variable.Value = value; }
         }
 
         public static implicit operator float(FloatReference reference)
