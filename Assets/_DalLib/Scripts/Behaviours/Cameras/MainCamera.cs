@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace DaleranGames
 {
+    [AddComponentMenu("Rendering/Main Camera")]
     public class MainCamera : MonoBehaviour
     {
         [SerializeField]
