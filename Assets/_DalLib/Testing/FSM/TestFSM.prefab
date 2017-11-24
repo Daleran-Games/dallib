@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4212691463343828}
-  - component: {fileID: 114110056508962168}
   - component: {fileID: 114151402428540870}
   - component: {fileID: 114521948559411974}
   - component: {fileID: 114965406025159118}
   - component: {fileID: 114218246059553600}
+  - component: {fileID: 114138071419489346}
   m_Layer: 0
   m_Name: TestFSM
   m_TagString: Untagged
@@ -44,7 +44,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114110056508962168
+--- !u!114 &114138071419489346
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1241754914800584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc4f65c140481ca43b91e2cadffb0e37, type: 3}
+  m_Script: {fileID: 11500000, guid: 383d4ae8bc78348418a36f482c287e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 114151402428540870}
@@ -62,12 +62,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241754914800584}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2def1159366e86b49b3e2625cd047c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 114110056508962168}
+  fsm: {fileID: 114138071419489346}
   nextState: {fileID: 114521948559411974}
 --- !u!114 &114218246059553600
 MonoBehaviour:
@@ -75,12 +75,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241754914800584}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2def1159366e86b49b3e2625cd047c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 114110056508962168}
+  fsm: {fileID: 114138071419489346}
   nextState: {fileID: 114151402428540870}
 --- !u!114 &114521948559411974
 MonoBehaviour:
@@ -88,12 +88,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241754914800584}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2def1159366e86b49b3e2625cd047c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 114110056508962168}
+  fsm: {fileID: 114138071419489346}
   nextState: {fileID: 114965406025159118}
 --- !u!114 &114965406025159118
 MonoBehaviour:
@@ -101,10 +101,10 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1241754914800584}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2def1159366e86b49b3e2625cd047c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 114110056508962168}
+  fsm: {fileID: 114138071419489346}
   nextState: {fileID: 114218246059553600}
