@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DaleranGames.GameStats;
 
-namespace DaleranGames.GameStats
+namespace DaleranGames.Testing
 {
     public class DrawerTester : MonoBehaviour
     {
