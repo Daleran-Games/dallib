@@ -6,22 +6,24 @@ namespace DaleranGames.Testing
 {
     public class VariableTester : MonoBehaviour
     {
-        [SerializeField]
-        FloatReference testRef;
-        [SerializeField]
-        FloatVariable testVar;
+        public StringVariable stringVar;
+        public StringReference stringRef;
 
-        // Use this for initialization
-        void Start()
-        {
+        public BoolVariable boolVar;
+        public BoolReference boolRef;
 
-        }
+        public IntVariable intVar;
+        public IntReference intRef;
 
-        // Update is called once per frame
-        void Update()
-        {
+        public FloatVariable floatVar;
+        public FloatReference floatRef;
 
-        }
+        public Vector2Variable vec2Var;
+        public Vector2Reference vec2Ref;
+
+        public Vector3Variable vec3Var;
+        public Vector3Reference vec3Ref;
+
     }
 }
 

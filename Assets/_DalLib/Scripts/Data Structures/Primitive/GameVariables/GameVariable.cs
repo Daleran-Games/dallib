@@ -5,12 +5,13 @@ using UnityEngine;
 
 namespace DaleranGames
 {
-    public class GameVariable<T> : ScriptableObject, ISerializationCallbackReceiver
+    public class GameVariable<T> : ScriptableObject
     {
         [SerializeField]
         protected T value;
         protected T originalValue;
         [TextArea(1,3)]
+        [SerializeField]
         protected string description = "";
         public string Description { get { return description; } }
 
@@ -33,21 +34,6 @@ namespace DaleranGames
         }
 
         T cachedValue;
-
-        public virtual void OnAfterDeserialize()
-        {
-            cachedValue = value;
-        }
-
-        public virtual void OnBeforeSerialize()
-        {
-            if (!cachedValue.Equals(value))
-            {
-                Changed?.Raise();
-            }
-        }
-
-
     }
 }
 
