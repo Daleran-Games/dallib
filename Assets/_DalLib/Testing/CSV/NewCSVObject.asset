@@ -21,6 +21,87 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: Data
-      Entry: 6
+      Entry: 7
+      Data: 0|DaleranGames.IO.CSVData, Assembly-CSharp
+    - Name: Name
+      Entry: 1
+      Data: NewCSVObject
+    - Name: rawData
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.String[], mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 2|System.String[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 1
+      Data: name
+    - Name: 
+      Entry: 1
+      Data: description
+    - Name: 
+      Entry: 1
+      Data: list
+    - Name: 
+      Entry: 13
       Data: 
-  CSVFilePath: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|System.String[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 1
+      Data: groceries
+    - Name: 
+      Entry: 1
+      Data: what I need to buy
+    - Name: 
+      Entry: 1
+      Data: potatoes;cucumbers;rice;cereal
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|System.String[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 1
+      Data: todo
+    - Name: 
+      Entry: 1
+      Data: what I need to do
+    - Name: 
+      Entry: 1
+      Data: shopping;cleaning
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  CSVFilePath: Assets/_DalLib/Testing/CSV/singleHeader.txt

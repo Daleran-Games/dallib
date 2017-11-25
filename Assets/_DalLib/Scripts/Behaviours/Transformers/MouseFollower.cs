@@ -12,5 +12,5 @@ namespace DaleranGames
             transform.position = Input.mousePosition;
         }
     }
-
 }
+

@@ -33,7 +33,6 @@ namespace DaleranGames
             value = originalValue;
         }
 
-        T cachedValue;
     }
 }
 

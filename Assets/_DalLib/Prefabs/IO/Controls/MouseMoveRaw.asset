@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c34c200531778344b4e8792e907f53c, type: 3}
-  m_Name: MouseWorldPosition
+  m_Script: {fileID: 11500000, guid: 638f7e647d129f149b451d7aa08d334e, type: 3}
+  m_Name: MouseMoveRaw
   m_EditorClassIdentifier: 
-  value: {x: 0, y: 0, z: 0}
-  description: World Position of the Mouse Cursor
+  value: {x: 0, y: 0}
+  description: The raw mouse X and Y components from the input system.
   Changed: {fileID: 0}

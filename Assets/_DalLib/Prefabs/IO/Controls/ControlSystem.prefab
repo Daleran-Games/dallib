@@ -19,6 +19,15 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4461698587550852}
+  - component: {fileID: 114932937592318010}
+  - component: {fileID: 114183801560423546}
+  - component: {fileID: 114747521616834748}
+  - component: {fileID: 114178111669900898}
+  - component: {fileID: 114733644228335146}
+  - component: {fileID: 114402092811650722}
+  - component: {fileID: 114644539124916418}
+  - component: {fileID: 114195849256854170}
+  - component: {fileID: 114962635838674398}
   m_Layer: 0
   m_Name: ControlSystem
   m_TagString: Untagged
@@ -39,3 +48,157 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114178111669900898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cc49db0c6ab874ca794794853cd3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Fire3
+  Pressed: {fileID: 11400000, guid: aff6eb874908ca042836663a0b46b8f5, type: 2}
+  Down: {fileID: 11400000, guid: 24677afda59424a47a1dffa267bc4ef8, type: 2}
+  Up: {fileID: 11400000, guid: 29a820dbb9bdd80489f05395d199b137, type: 2}
+--- !u!114 &114183801560423546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cc49db0c6ab874ca794794853cd3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Fire1
+  Pressed: {fileID: 11400000, guid: cd8308b27efbe28459b63101420f5e61, type: 2}
+  Down: {fileID: 11400000, guid: ef75c87a998038f4a9c9f26c31a8c583, type: 2}
+  Up: {fileID: 11400000, guid: 5a4c990657c5a56429d55525ffc35ff8, type: 2}
+--- !u!114 &114195849256854170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cc49db0c6ab874ca794794853cd3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Submit
+  Pressed: {fileID: 0}
+  Down: {fileID: 0}
+  Up: {fileID: 11400000, guid: eb00d1887abea23478dcc16b2f0b18aa, type: 2}
+--- !u!114 &114402092811650722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ffaa2f5f7ec4cf43b1347295e10016e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Mouse ScrollWheel
+  axisValue:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 7da81928db9c8ad458455f4185a2684c, type: 2}
+  rawValue:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: bbc4730ff0a29cf4a8c42a829e1a753a, type: 2}
+--- !u!114 &114644539124916418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed659d18e79d1874489d84bbd510b21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xAxisName: Mouse X
+  yAxisName: Mouse Y
+  normalize: 0
+  axisDirection:
+    useConstant: 0
+    constantValue: {x: 0, y: 0}
+    variable: {fileID: 11400000, guid: ce46c5bb669ca0d42a392df797f17b5e, type: 2}
+  axisDirectionRaw:
+    useConstant: 0
+    constantValue: {x: 0, y: 0}
+    variable: {fileID: 11400000, guid: 5051bd61a0fd3d7449fe4f378d4c8f1e, type: 2}
+--- !u!114 &114733644228335146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cc49db0c6ab874ca794794853cd3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Jump
+  Pressed: {fileID: 11400000, guid: 336163ee69cf4ab4ea395c9fa4b45b9a, type: 2}
+  Down: {fileID: 11400000, guid: 7a890157f0215f64386a6429e1424ff6, type: 2}
+  Up: {fileID: 11400000, guid: 5e8c21f7fd9e1db4384a78af738c65c3, type: 2}
+--- !u!114 &114747521616834748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cc49db0c6ab874ca794794853cd3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Fire2
+  Pressed: {fileID: 11400000, guid: aff6eb874908ca042836663a0b46b8f5, type: 2}
+  Down: {fileID: 11400000, guid: 36db126df1723884e88061a49e4a8c9b, type: 2}
+  Up: {fileID: 11400000, guid: e23a777045c2a464c81d40b0a2fbaa63, type: 2}
+--- !u!114 &114932937592318010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed659d18e79d1874489d84bbd510b21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xAxisName: Horizontal
+  yAxisName: Vertical
+  normalize: 1
+  axisDirection:
+    useConstant: 0
+    constantValue: {x: 0, y: 0}
+    variable: {fileID: 11400000, guid: 0cd4163ad170e31448d2e649bbcff868, type: 2}
+  axisDirectionRaw:
+    useConstant: 0
+    constantValue: {x: 0, y: 0}
+    variable: {fileID: 11400000, guid: 5b228e4fa68015c4c92eeb60f8d79a62, type: 2}
+--- !u!114 &114962635838674398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062086626392672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cc49db0c6ab874ca794794853cd3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisName: Cancel
+  Pressed: {fileID: 0}
+  Down: {fileID: 0}
+  Up: {fileID: 11400000, guid: 58a49a6b8656174439b61a202a5bf14d, type: 2}

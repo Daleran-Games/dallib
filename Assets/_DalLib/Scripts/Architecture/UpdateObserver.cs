@@ -13,85 +13,26 @@ namespace DaleranGames
             LateUpdate
         }
 
-        public static bool hideGameObject = true;
+        public GameEvent FixedUpdateEvent;
+        public GameEvent UpdateEvent;
+        public GameEvent LateUpdateEvent;
 
-        private event Action fixedUpdateTarget;
-        private event Action updateTarget;
-        private event Action lateUpdateTarget;
-
-        public void Register(Action action, UpdateType updateType)
-        {
-            switch (updateType)
-            {
-                case UpdateType.FixedUpdate:
-                    fixedUpdateTarget += action;
-                    return;
-                case UpdateType.Update:
-                    updateTarget += action;
-                    return;
-                case UpdateType.LateUpdate:
-                    lateUpdateTarget += action;
-                    return;
-            }
-        }
-
-        public void UnRegister(Action action, UpdateType updateType)
-        {
-            switch (updateType)
-            {
-                case UpdateType.FixedUpdate:
-                    fixedUpdateTarget -= action;
-                    return;
-                case UpdateType.Update:
-                    updateTarget -= action;
-                    return;
-                case UpdateType.LateUpdate:
-                    lateUpdateTarget -= action;
-                    return;
-            }
-        }
 
         void FixedUpdate()
         {
-            DoUpdating(fixedUpdateTarget);
+            FixedUpdateEvent.Raise();
         }
 
         void Update()
         {
-            DoUpdating(updateTarget);
+            UpdateEvent.Raise();
         }
 
         void LateUpdate()
         {
-            DoUpdating(lateUpdateTarget);
+            LateUpdateEvent.Raise();
         }
 
-        void DoUpdating(Action currentEvent)
-        {
-            if (currentEvent != null)
-            {
-                currentEvent();
-            }
-        }
-
-        void OnDestroy()
-        {
-            RemoveAll(fixedUpdateTarget);
-            RemoveAll(updateTarget);
-            RemoveAll(lateUpdateTarget);
-        }
-
-        void RemoveAll(Action deadEvent)
-        {
-            if (deadEvent != null)
-            {
-                Delegate[] clientList = deadEvent.GetInvocationList();
-                foreach (Delegate d in clientList)
-                {
-                    deadEvent -= (d as Action);
-                }
-            }
-        }
     }
 }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace DaleranGames.IO
 {
+    [AddComponentMenu("Input/Cursor Mode")]
     public class CursorMode : MonoBehaviour
     {
         public enum MouseRenderer

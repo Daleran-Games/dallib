@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: MouseScreenPosition
   m_EditorClassIdentifier: 
   value: {x: 0, y: 0, z: 0}
-  description: 
+  description: Screen position of the mouse cursor
   Changed: {fileID: 0}
