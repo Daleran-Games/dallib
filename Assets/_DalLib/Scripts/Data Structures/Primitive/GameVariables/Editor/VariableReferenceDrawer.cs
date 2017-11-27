@@ -5,8 +5,13 @@ using UnityEditor;
 
 namespace DaleranGames
 {
+    [CustomPropertyDrawer(typeof(StringReference), true)]
+    [CustomPropertyDrawer(typeof(FloatReference), true)]
     [CustomPropertyDrawer(typeof(IntReference), true)]
-    public class IntReferenceDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(BoolReference), true)]
+    [CustomPropertyDrawer(typeof(Vector2Reference), true)]
+    [CustomPropertyDrawer(typeof(Vector3Reference), true)]
+    public class VariableReferenceDrawer : PropertyDrawer
     {
         /// <summary>
         /// Options to display in the popup to select constant or variable.
@@ -60,5 +65,4 @@ namespace DaleranGames
             EditorGUI.EndProperty();
         }
     }
-
 }

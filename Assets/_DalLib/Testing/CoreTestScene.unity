@@ -246,6 +246,21 @@ Prefab:
       propertyPath: testRef.useConstant
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114346184437744040, guid: daf3fa6064b7281439dd9bed5a3fce83,
+        type: 2}
+      propertyPath: boolRef.constantValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114346184437744040, guid: daf3fa6064b7281439dd9bed5a3fce83,
+        type: 2}
+      propertyPath: boolRef.useConstant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114346184437744040, guid: daf3fa6064b7281439dd9bed5a3fce83,
+        type: 2}
+      propertyPath: stringRef.useConstant
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: daf3fa6064b7281439dd9bed5a3fce83, type: 2}
   m_IsPrefabParent: 0
@@ -351,12 +366,12 @@ Prefab:
     - target: {fileID: 224434561674491992, guid: b2f54c1c67801384c9819ec5758086a7,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 454
+      value: 386.5
       objectReference: {fileID: 0}
     - target: {fileID: 224434561674491992, guid: b2f54c1c67801384c9819ec5758086a7,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 255.5
+      value: 217.5
       objectReference: {fileID: 0}
     - target: {fileID: 224434561674491992, guid: b2f54c1c67801384c9819ec5758086a7,
         type: 2}

@@ -23,6 +23,12 @@ namespace DaleranGames
             constantValue = value;
         }
 
+        public VariableReference(V gameVariable)
+        {
+            useConstant = false;
+            variable = gameVariable;
+        }
+
         public virtual T Value
         {
             get { return useConstant ? constantValue : variable.Value; }

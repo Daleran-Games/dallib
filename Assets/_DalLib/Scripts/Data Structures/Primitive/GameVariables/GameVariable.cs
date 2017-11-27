@@ -33,6 +33,13 @@ namespace DaleranGames
             value = originalValue;
         }
 
+        public static V Create<V>(T value) where V:GameVariable<T>
+        {
+            V newGameVar = CreateInstance<V>();
+            newGameVar.Value = value;
+            return newGameVar;
+        }
+
     }
 }
 
