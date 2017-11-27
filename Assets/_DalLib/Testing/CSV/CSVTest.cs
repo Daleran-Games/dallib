@@ -8,8 +8,6 @@ namespace DaleranGames.Testing
     public class CSVTest : MonoBehaviour
     {
 
-        public CSVObject obj;
-
         [ContextMenu("Print Single Header CSV")]
         void PrintSingleHeader()
         {

@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using Sirenix.OdinInspector;
 
 namespace DaleranGames.IO
 {
+    [System.Serializable]
     public class CSVData
     {
         public readonly string Name;
 
-        [TableList()]
         [SerializeField]
         List<string[]> rawData;
         public List<string[]> RawData { get { return rawData; } }
