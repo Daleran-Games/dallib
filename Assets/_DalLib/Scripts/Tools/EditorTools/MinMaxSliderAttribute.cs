@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 
-public class MinMaxSliderAttribute : PropertyAttribute
+namespace DaleranGames
 {
-
-    public readonly float max;
-    public readonly float min;
-
-    public MinMaxSliderAttribute(float min, float max)
+    public class MinMaxSliderAttribute : PropertyAttribute
     {
-        this.min = min;
-        this.max = max;
+
+        public readonly float max;
+        public readonly float min;
+
+        public MinMaxSliderAttribute(float min, float max)
+        {
+            this.min = min;
+            this.max = max;
+        }
     }
 }
+

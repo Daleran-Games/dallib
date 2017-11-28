@@ -12,6 +12,8 @@ namespace DaleranGames.GameStats
         static List<StatType> statTypes = Enumeration.GetAll<StatType>().ToList();
         string[] statNames = GetNames(statTypes);
 
+
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             string name = property.displayName;

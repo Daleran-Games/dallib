@@ -1,31 +1,34 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(MinMaxSliderAttribute))]
-class MinMaxSliderDrawer : PropertyDrawer
+namespace DaleranGames
 {
-
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    [CustomPropertyDrawer(typeof(MinMaxSliderAttribute))]
+    class MinMaxSliderDrawer : PropertyDrawer
     {
 
-        if (property.propertyType == SerializedPropertyType.Vector2)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Vector2 range = property.vector2Value;
-            float min = range.x;
-            float max = range.y;
-            MinMaxSliderAttribute attr = attribute as MinMaxSliderAttribute;
-            EditorGUI.BeginChangeCheck();
-            EditorGUI.MinMaxSlider(position, label,  ref min, ref max, attr.min, attr.max);
-            if (EditorGUI.EndChangeCheck())
+
+            if (property.propertyType == SerializedPropertyType.Vector2)
             {
-                range.x = min;
-                range.y = max;
-                property.vector2Value = range;
+                Vector2 range = property.vector2Value;
+                float min = range.x;
+                float max = range.y;
+                MinMaxSliderAttribute attr = attribute as MinMaxSliderAttribute;
+                EditorGUI.BeginChangeCheck();
+                EditorGUI.MinMaxSlider(position, label, ref min, ref max, attr.min, attr.max);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    range.x = min;
+                    range.y = max;
+                    property.vector2Value = range;
+                }
             }
-        }
-        else
-        {
-            EditorGUI.LabelField(position, label, "Use only with Vector2");
+            else
+            {
+                EditorGUI.LabelField(position, label, "Use only with Vector2");
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace UnityEngine
+namespace DaleranGames
 {
     public class ReadOnlyAttribute : PropertyAttribute
     {

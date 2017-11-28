@@ -24,6 +24,9 @@ namespace DaleranGames.Testing
         public Vector3Variable vec3Var;
         public Vector3Reference vec3Ref;
 
+        [StringPopup("One","Two","Three")]
+        public string test;
+
     }
 }
 
