@@ -1,0 +1,57 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace DaleranGames.IO
+{
+    [AddComponentMenu("Input/Cursor Mode")]
+    public class CursorMode : MonoBehaviour
+    {
+        public enum MouseRenderer
+        {
+            None = 0,
+            Sprite = 1,
+            Hardware = 2
+        }
+
+        [SerializeField]
+        MouseRenderer renderMode = MouseRenderer.Sprite;
+#pragma warning disable 0649
+        [SerializeField]
+        Image cursorSprite;
+#pragma warning restore 0649
+
+        // Use this for initialization
+        void Start()
+        {
+            ChangeMouseRenderingMode(renderMode);
+        }
+        
+        public void ChangeMouseRenderingMode(MouseRenderer state)
+        {
+            switch (state)
+            {
+                case MouseRenderer.None:
+                    Cursor.visible = false;
+                    cursorSprite.enabled = false;
+                    break;
+                case MouseRenderer.Sprite:
+                    Cursor.visible = false;
+                    cursorSprite.enabled = true;
+                    break;
+                case MouseRenderer.Hardware:
+                    Cursor.visible = true;
+                    cursorSprite.enabled = false;
+                    break;
+            }
+        }
+
+        [ContextMenu("Commit")]
+        public void CommitCursorChange()
+        {
+            ChangeMouseRenderingMode(renderMode);
+        }
+    }
+}
+

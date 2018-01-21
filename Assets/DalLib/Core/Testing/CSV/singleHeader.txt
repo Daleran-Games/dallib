@@ -1,3 +1,0 @@
-name,description,list
-groceries,what I need to buy,potatoes;cucumbers;rice;cereal
-todo,what I need to do,shopping;cleaning
