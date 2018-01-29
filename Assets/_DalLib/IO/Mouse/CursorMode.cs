@@ -17,10 +17,9 @@ namespace DaleranGames.IO
 
         [SerializeField]
         MouseRenderer renderMode = MouseRenderer.Sprite;
-#pragma warning disable 0649
+
         [SerializeField]
         Image cursorSprite;
-#pragma warning restore 0649
 
         // Use this for initialization
         void Start()

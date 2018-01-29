@@ -64,11 +64,12 @@ namespace UnityEditor
 				return s_AutoTransforms;
 			}
 		}
-#pragma warning disable 0649
+
         private ReorderableList m_ReorderableList;
 		public RuleTile tile { get { return (target as RuleTile); } }
 		private Rect m_ListRect;
-#pragma warning restore 0649
+
+
         const float k_DefaultElementHeight = 48f;
 		const float k_PaddingBetweenRules = 13f;
 		const float k_SingleLineHeight = 16f;

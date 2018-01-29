@@ -41,9 +41,7 @@ namespace DaleranGames.Sprites
             get { return mode; }
             set { mode = value; }
         }
-#pragma warning disable 0649
         float pingPong = 1;
-#pragma warning restore 0649
         // Use this for initialization
         void Start()
         {

@@ -1,12 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace DaleranGames.PixelArt
 {
     [AddComponentMenu("Rendering/Pixel Perfect Camera")]
     public class PixelPerfectCamera : MonoBehaviour
     {
+        public int PixelsPerUnit = 1;
+        public float UnitsInPixels = 1 / PixelsPerUnit;
+
+        int scale = 1;
+        public int Scale
+        {
+            get { return scale; }
+            set
+            {
+                if (value > 0)
+                {
+                    scale = value;
+                    ScaleChanged?.Invoke(scale);
+                }
+            }
+        }
+        public event Action<int> ScaleChanged;
+
         protected Camera cam;
         // Use this for initialization
         void Start()

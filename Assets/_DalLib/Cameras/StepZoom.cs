@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DaleranGames
+namespace DaleranGames.Cameras
 {
     [AddComponentMenu("Rendering/Step Camera Zoom")]
     public class StepZoom : MonoBehaviour

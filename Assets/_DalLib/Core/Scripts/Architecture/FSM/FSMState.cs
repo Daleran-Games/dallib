@@ -7,7 +7,6 @@ namespace DaleranGames
 {
     public abstract class FSMState : MonoBehaviour
     {
-
         [SerializeField]
         protected FSMBehavior fsm;
         public virtual  FSMBehavior FSM { get { return fsm; } } 

@@ -8,7 +8,7 @@ namespace DaleranGames.UI
     public class TooltipController : Singleton<TooltipController>
     {
         protected TooltipController( ) { }
-#pragma warning disable 0649
+
         [SerializeField]
         RectTransform canvasRect;
         Canvas canvas;
@@ -19,7 +19,7 @@ namespace DaleranGames.UI
 
         [SerializeField]
         TextMeshProUGUI tooltipText;
-#pragma warning restore 0649
+
         [SerializeField]
         Vector2 offset = new Vector2(32f, -32f);
 

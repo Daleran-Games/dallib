@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DaleranGames.UI
 {
-    public class WorldMouseFollower : MonoBehaviour
+    public class CanvasMouseFollower : MonoBehaviour
     {
         RectTransform rect;
 
