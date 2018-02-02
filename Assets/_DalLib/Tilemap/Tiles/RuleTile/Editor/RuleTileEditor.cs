@@ -142,7 +142,7 @@ namespace UnityEditor
 		{
 			tile.m_DefaultSprite = EditorGUILayout.ObjectField("Default Sprite", tile.m_DefaultSprite, typeof(Sprite), false) as Sprite;
 			tile.m_DefaultColliderType = (Tile.ColliderType)EditorGUILayout.EnumPopup("Default Collider", tile.m_DefaultColliderType);
-            tile.m_TileInfo = EditorGUILayout.ObjectField("Tile Info", tile.m_TileInfo, typeof(ScriptableObject), false) as ScriptableObject;
+            tile.m_TileScript = EditorGUILayout.ObjectField("Tile Script", tile.m_TileScript, typeof(TileScript), false) as TileScript;
 
             EditorGUILayout.Space();
 

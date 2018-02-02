@@ -10,7 +10,7 @@ namespace UnityEngine
 	{
 		public Sprite m_DefaultSprite;
 		public Tile.ColliderType m_DefaultColliderType = Tile.ColliderType.Sprite;
-        public ScriptableObject m_TileInfo;
+        public TileScript m_TileScript;
 
 		[Serializable]
 		public class TilingRule
@@ -112,9 +112,11 @@ namespace UnityEngine
 			{
 				base.RefreshTile(location, tileMap);
 			}
+
+            m_TileScript.RefreshTile(location, tileMap);
 		}
 
-		public bool RuleMatches(TilingRule rule, Vector3Int position, ITilemap tilemap, ref Matrix4x4 transform)
+        public bool RuleMatches(TilingRule rule, Vector3Int position, ITilemap tilemap, ref Matrix4x4 transform)
 		{
 			// Check rule against rotations of 0, 90, 180, 270
 			for (int angle = 0; angle <= (rule.m_RuleTransform == TilingRule.Transform.Rotated ? 270 : 0); angle += 90)

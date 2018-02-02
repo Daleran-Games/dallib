@@ -26,7 +26,7 @@ namespace DaleranGames.IO
         {
             ChangeMouseRenderingMode(renderMode);
         }
-        
+
         public void ChangeMouseRenderingMode(MouseRenderer state)
         {
             switch (state)
@@ -44,12 +44,6 @@ namespace DaleranGames.IO
                     cursorSprite.enabled = false;
                     break;
             }
-        }
-
-        [ContextMenu("Commit")]
-        public void CommitCursorChange()
-        {
-            ChangeMouseRenderingMode(renderMode);
         }
     }
 }

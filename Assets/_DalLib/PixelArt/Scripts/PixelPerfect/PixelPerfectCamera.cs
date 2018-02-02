@@ -6,11 +6,18 @@ using System;
 namespace DaleranGames.PixelArt
 {
     [AddComponentMenu("Rendering/Pixel Perfect Camera")]
+    [ExecuteInEditMode]
     public class PixelPerfectCamera : MonoBehaviour
     {
-        public int PixelsPerUnit = 1;
-        public float UnitsInPixels = 1 / PixelsPerUnit;
+        [SerializeField]
+        int pixelsPerUnit = 1;
+        public float PixelsPerUnit { get { return pixelsPerUnit; } }
 
+        float unitsInPixels;
+        public float UnitsInPixel { get { return unitsInPixels; } }
+
+        [SerializeField]
+        [Range(1,20)]
         int scale = 1;
         public int Scale
         {
@@ -20,7 +27,8 @@ namespace DaleranGames.PixelArt
                 if (value > 0)
                 {
                     scale = value;
-                    ScaleChanged?.Invoke(scale);
+                    ScaleCamera();
+                    ScaleChanged?.Invoke(scale); 
                 }
             }
         }
@@ -33,25 +41,21 @@ namespace DaleranGames.PixelArt
             ScaleCamera();
         }
 
-        private void OnEnable()
+        private void OnValidate()
         {
-            PixelPerfect.ScaleChanged += ScaleCamera;
-        }
-
-        private void OnDisable()
-        {
-            PixelPerfect.ScaleChanged -= ScaleCamera;
+            unitsInPixels = 1 / pixelsPerUnit;
+            ScaleCamera();
         }
 
         protected virtual float CalculateOrthographicSize(float scale)
         {
-            return Screen.height / (scale * PixelPerfect.PixelsPerUnit) * 0.5f;
+            return Screen.height / (scale * PixelsPerUnit) * 0.5f;
         }
 
         [ContextMenu("Scale Camera")]
         public void ScaleCamera()
         {
-            ScaleCamera(PixelPerfect.Scale);
+            ScaleCamera(Scale);
         }
 
         public void ScaleCamera(int scale)
