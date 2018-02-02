@@ -6,7 +6,6 @@ using System;
 namespace DaleranGames.PixelArt
 {
     [AddComponentMenu("Rendering/Pixel Perfect Camera")]
-    [ExecuteInEditMode]
     public class PixelPerfectCamera : MonoBehaviour
     {
         [SerializeField]

@@ -252,16 +252,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 20251024521281122, guid: 83798b1d41f862a4191fdc23416c9fa0,
+        type: 2}
+      propertyPath: orthographic size
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 114383761386241922, guid: 83798b1d41f862a4191fdc23416c9fa0,
         type: 2}
       propertyPath: Target
       value: 
       objectReference: {fileID: 565489307}
-    - target: {fileID: 20251024521281122, guid: 83798b1d41f862a4191fdc23416c9fa0,
-        type: 2}
-      propertyPath: orthographic size
-      value: 307
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83798b1d41f862a4191fdc23416c9fa0, type: 2}
   m_IsPrefabParent: 0
@@ -289,7 +289,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1666366122}
+  - {fileID: 939587222}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -393,6 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 550196045}
   - component: {fileID: 550196046}
+  - component: {fileID: 550196047}
   m_Layer: 0
   m_Name: PointDefenseTurret
   m_TagString: Untagged
@@ -446,7 +449,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300008, guid: cec0f39e8d99def468e8c2c1cbe709c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -457,6 +460,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &550196047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550196044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d404f0eb31cbb634fab7beade6b7f007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &565489306
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +480,9 @@ GameObject:
   m_Component:
   - component: {fileID: 565489307}
   - component: {fileID: 565489308}
+  - component: {fileID: 565489311}
+  - component: {fileID: 565489310}
+  - component: {fileID: 565489309}
   m_Layer: 0
   m_Name: PlayerFleetController
   m_TagString: Player
@@ -519,7 +536,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300080, guid: 304fe00234e5c124e8b99ffb78ec6a0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -530,6 +547,53 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &565489309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565489306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca66e272dda16f43a0b01b650aee13e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Nav: {fileID: 1347391380}
+  MaxSpeed: 150
+  MaxAcceleration: 150
+  VelocityError: 0.1
+--- !u!114 &565489310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565489306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdfbd7b413d239409e9e2f89f45477c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headingTolerance: 0.1
+--- !u!50 &565489311
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565489306}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &683109998
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,8 +605,10 @@ GameObject:
   - component: {fileID: 683110000}
   - component: {fileID: 683110002}
   - component: {fileID: 683110001}
+  - component: {fileID: 683110003}
+  - component: {fileID: 683110004}
   m_Layer: 0
-  m_Name: Ship1
+  m_Name: SupportShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,7 +661,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: cec0f39e8d99def468e8c2c1cbe709c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -644,13 +710,39 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &683110003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 683109998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdfbd7b413d239409e9e2f89f45477c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headingTolerance: 0.1
+--- !u!114 &683110004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 683109998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5803b9a0263c36e4faf37e87799121f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fleet: {fileID: 565489309}
+  MaxSpeed: 95
+  MaxAcceleration: 35
 --- !u!1 &873446678
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,8 +754,10 @@ GameObject:
   - component: {fileID: 873446682}
   - component: {fileID: 873446681}
   - component: {fileID: 873446680}
+  - component: {fileID: 873446683}
+  - component: {fileID: 873446684}
   m_Layer: 0
-  m_Name: Ship2
+  m_Name: DefenseShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -722,8 +816,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -762,7 +856,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300002, guid: cec0f39e8d99def468e8c2c1cbe709c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -773,6 +867,32 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &873446683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 873446678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdfbd7b413d239409e9e2f89f45477c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headingTolerance: 0.1
+--- !u!114 &873446684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 873446678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5803b9a0263c36e4faf37e87799121f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fleet: {fileID: 565489309}
+  MaxSpeed: 75
+  MaxAcceleration: 25
 --- !u!1 &876066749
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,12 +988,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 939587220}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -327, y: -56, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 143385877}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1155380800
 GameObject:
@@ -906,6 +1026,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1347391380 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114039013567784560, guid: 0d25796b054d6fc4ab16082e72d3ab8c,
+    type: 2}
+  m_PrefabInternal: {fileID: 35702985}
+  m_Script: {fileID: 11500000, guid: aea0b3842b5f15746b7db44bb57dfa20, type: 3}
 --- !u!1 &1431528561
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +1041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431528562}
   - component: {fileID: 1431528563}
+  - component: {fileID: 1431528564}
   m_Layer: 0
   m_Name: PointDefenseTurretR
   m_TagString: Untagged
@@ -968,7 +1095,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300008, guid: cec0f39e8d99def468e8c2c1cbe709c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -979,6 +1106,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1431528564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431528561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d404f0eb31cbb634fab7beade6b7f007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1607280598
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,6 +1126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1607280599}
   - component: {fileID: 1607280600}
+  - component: {fileID: 1607280601}
   m_Layer: 0
   m_Name: PointDefenseTurretL
   m_TagString: Untagged
@@ -1041,7 +1180,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300008, guid: cec0f39e8d99def468e8c2c1cbe709c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1052,6 +1191,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1607280601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1607280598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d404f0eb31cbb634fab7beade6b7f007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1666366120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,12 +1268,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1666366120}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -257, y: 160, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 143385877}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1866028357
 GameObject:
