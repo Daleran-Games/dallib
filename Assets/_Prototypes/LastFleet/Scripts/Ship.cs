@@ -10,10 +10,19 @@ namespace DaleranGames.LastFleet
 
         public float MaxSpeed;
         public float MaxAcceleration;
+        public float VelocityError = 0.1f;
 
         Rigidbody2D rb;
-        Vector2 offset;
+        GameObject formationPoint;
+        Vector2 desiredVelocity;
 
+
+        private void OnEnable()
+        {
+            formationPoint = new GameObject(gameObject.name + "FormationSlot");
+            formationPoint.transform.SetPositionAndRotation(transform.position, gameObject.transform.rotation);
+            formationPoint.transform.SetParent(Fleet.gameObject.transform);
+        }
 
         // Use this for initialization
         void Start()
@@ -24,13 +33,27 @@ namespace DaleranGames.LastFleet
             if (Fleet.MaxAcceleration > MaxAcceleration)
                 Fleet.MaxAcceleration = MaxAcceleration;
 
-            offset = Fleet.transform.position - transform.position;
             rb = gameObject.GetRequiredComponent<Rigidbody2D>();
+        }
+
+        private void OnDisable()
+        {
+            Destroy(formationPoint);
+        }
+
+        private void Update()
+        {
+            desiredVelocity = Fleet.DesiredVelocity + (Vector2)(formationPoint.transform.position - transform.position);
         }
 
         private void FixedUpdate()
         {
- 
+            Vector2 steering = Vector2.ClampMagnitude(desiredVelocity - rb.velocity, MaxAcceleration);
+
+            if (steering.magnitude > VelocityError)
+            {
+                rb.AddForce(steering);
+            }
         }
     }
 }
