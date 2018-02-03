@@ -6,6 +6,9 @@ namespace DaleranGames.LastFleet
 {
     public class Fleet : MonoBehaviour
     {
+        public string FleetName = "Last Fleet";
+        public string AdmiralName = "Daleran";
+
 
         public NavTarget Nav;
         Rigidbody2D rb;
