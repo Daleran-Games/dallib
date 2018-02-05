@@ -27,11 +27,7 @@ namespace DaleranGames.LastFleet
         // Use this for initialization
         void Start()
         {
-            if (Fleet.MaxSpeed > MaxSpeed)
-                Fleet.MaxSpeed = MaxSpeed;
-
-            if (Fleet.MaxAcceleration > MaxAcceleration)
-                Fleet.MaxAcceleration = MaxAcceleration;
+            Fleet.AddShip(new Vector2(MaxSpeed, MaxAcceleration));
 
             rb = gameObject.GetRequiredComponent<Rigidbody2D>();
         }

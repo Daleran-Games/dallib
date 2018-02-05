@@ -35,15 +35,16 @@ namespace DaleranGames.LastFleet
                 Destroy(gameObject);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             Condition otherCond = collision.gameObject.GetComponent<Condition>();
 
             if (otherCond != null)
             {
                 otherCond.DealDamage(damage);
-                Destroy(this);
             }
+
+            Destroy(this.gameObject);
         }
 
     }
