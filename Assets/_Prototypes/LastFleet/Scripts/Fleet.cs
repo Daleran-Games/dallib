@@ -21,7 +21,8 @@ namespace DaleranGames.LastFleet
         float maxAcceleration = 999f;
         public float MaxAcceleration { get { return maxAcceleration; } }
 
-        
+        public Supplies SupplySystem;
+        public float SupplyUse = 0;
 
         public float VelocityError = 0.1f;
 
@@ -39,7 +40,14 @@ namespace DaleranGames.LastFleet
         void Update()
         {
             float desiredSpeed = maxSpeed * Nav.Throttle;
-            desiredVelocity = Nav.Heading.normalized * desiredSpeed;
+
+
+            if (SupplySystem.UseSupplies(SupplyUse * Time.deltaTime * Nav.Throttle))
+            {
+                desiredVelocity = Nav.Heading.normalized * desiredSpeed;
+            }
+            else
+                desiredVelocity = Vector2.zero;
 
         }
 

@@ -16,6 +16,11 @@ namespace DaleranGames.LastFleet
         float fireDelay;
         float nextFire = 0f;
 
+        [SerializeField]
+        float suppliesPerShot;
+        [SerializeField]
+        Supplies supplySystem;
+
         RayPositionReporter AimingCursor;
 
 
@@ -29,8 +34,8 @@ namespace DaleranGames.LastFleet
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButton(0))
-                FireRound();
+            //if (Input.GetMouseButton(0))
+                //FireRound();
 
             float angle = Vector2.SignedAngle(transform.up, AimingCursor.WorldPosition - transform.position);
             transform.Rotate(0f, 0f, angle);
@@ -40,8 +45,11 @@ namespace DaleranGames.LastFleet
         {
             if (Time.time > nextFire)
             {
-                nextFire = Time.time + fireDelay;
-                Instantiate(projectile, transform.position, transform.rotation);
+                if (supplySystem.UseSupplies(suppliesPerShot))
+                {
+                    nextFire = Time.time + fireDelay;
+                    Instantiate(projectile, transform.position, transform.rotation);
+                }
             }
         }
 

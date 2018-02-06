@@ -18,9 +18,9 @@ TagManager:
   - PlayerProjectiles
   - Enemy
   - EnemyProjectiles
-  - 
-  - 
-  - 
+  - Drop
+  - Destructable
+  - Scenery
   - 
   - 
   - 

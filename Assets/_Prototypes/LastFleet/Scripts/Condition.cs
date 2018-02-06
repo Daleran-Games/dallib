@@ -60,8 +60,6 @@ namespace DaleranGames.LastFleet
             }
             return false;
         }
-
-
     }
 
 }

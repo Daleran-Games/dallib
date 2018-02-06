@@ -11,30 +11,36 @@ namespace DaleranGames.LastFleet
         public float MaxSpeed;
         public float MaxAcceleration;
         public float VelocityError = 0.1f;
+        public float FuelBurnRate;
+
 
         Rigidbody2D rb;
-        GameObject formationPoint;
         Vector2 desiredVelocity;
+        Vector2 speedAndAccel;
 
+        GameObject formationPoint;
 
         private void OnEnable()
         {
             formationPoint = new GameObject(gameObject.name + "FormationSlot");
             formationPoint.transform.SetPositionAndRotation(transform.position, gameObject.transform.rotation);
             formationPoint.transform.SetParent(Fleet.gameObject.transform);
+            speedAndAccel = new Vector2(MaxSpeed, MaxAcceleration);
         }
 
         // Use this for initialization
         void Start()
         {
-            Fleet.AddShip(new Vector2(MaxSpeed, MaxAcceleration));
-
+            Fleet.AddShip(speedAndAccel);
+            Fleet.SupplyUse += FuelBurnRate;
             rb = gameObject.GetRequiredComponent<Rigidbody2D>();
         }
 
         private void OnDisable()
         {
             Destroy(formationPoint);
+            Fleet.SupplyUse -= FuelBurnRate;
+            Fleet.RemoveShip(speedAndAccel);
         }
 
         private void Update()
@@ -51,5 +57,11 @@ namespace DaleranGames.LastFleet
                 rb.AddForce(steering);
             }
         }
+
+        private void OnMouseDown()
+        {
+            
+        }
+
     }
 }
