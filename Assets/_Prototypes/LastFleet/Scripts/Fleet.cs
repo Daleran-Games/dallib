@@ -30,6 +30,8 @@ namespace DaleranGames.LastFleet
         public Vector2 DesiredVelocity { get { return desiredVelocity; } }
         List<Vector2> velocities = new List<Vector2>();
 
+        List<FormationSpot> formation = new List<FormationSpot>();
+
         // Use this for initialization
         void Start()
         {
@@ -62,14 +64,16 @@ namespace DaleranGames.LastFleet
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
         }
 
-        public void AddShip(Vector2 velocityAndAcceleration)
+        public void AddShip(Vector2 velocityAndAcceleration, FormationSpot spot)
         {
+            formation.Add(spot);
             velocities.Add(velocityAndAcceleration);
             RecalculateAverageVelocityAndAcceleration();
         }
 
-        public void RemoveShip(Vector2 velocityAndAcceleration)
+        public void RemoveShip(Vector2 velocityAndAcceleration, FormationSpot spot)
         {
+            formation.Remove(spot);
             velocities.Remove(velocityAndAcceleration);
             RecalculateAverageVelocityAndAcceleration();
         }
@@ -88,6 +92,26 @@ namespace DaleranGames.LastFleet
             maxSpeed = avgV / velocities.Count;
             maxAcceleration = avgA / velocities.Count;
         }
+
+        public void ChangeFormation(FormationSpot changingSpot, bool enable)
+        {
+            for (int i=0;i<formation.Count;i++)
+            {
+                if (formation[i] != changingSpot)
+                {
+                    formation[i].ToggleSpotGhost(enable);
+                }
+            }
+        }
+
+        void ToggleFormationGhosts(bool enable)
+        {
+            for (int i = 0; i < formation.Count; i++)
+            {
+                formation[i].ToggleSpotGhost(enable);
+            }
+        }
+
     }
 }
 

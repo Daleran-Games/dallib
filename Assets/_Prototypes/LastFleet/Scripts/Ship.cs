@@ -17,35 +17,47 @@ namespace DaleranGames.LastFleet
         Rigidbody2D rb;
         Vector2 desiredVelocity;
         Vector2 speedAndAccel;
+        SpriteRenderer rend;
+        Collider2D col;
 
-        GameObject formationPoint;
+        [SerializeField]
+        GameObject spotPrefab;
+        FormationSpot formation;
 
         private void OnEnable()
         {
-            formationPoint = new GameObject(gameObject.name + "FormationSlot");
-            formationPoint.transform.SetPositionAndRotation(transform.position, gameObject.transform.rotation);
-            formationPoint.transform.SetParent(Fleet.gameObject.transform);
+            rend = GetComponent<SpriteRenderer>();
+            col = GetComponent<Collider2D>();
+
+            GameObject newSpot = Instantiate(spotPrefab, transform.position, Fleet.gameObject.transform.rotation, Fleet.gameObject.transform);
+            formation = newSpot.GetComponent<FormationSpot>();
+            newSpot.name = gameObject.name + "Formation Spot";
+
+
+            formation.Initialize(rend.sprite,(col.bounds.max-transform.position).magnitude);
+
             speedAndAccel = new Vector2(MaxSpeed, MaxAcceleration);
+            Fleet.AddShip(speedAndAccel,formation);
         }
 
         // Use this for initialization
         void Start()
         {
-            Fleet.AddShip(speedAndAccel);
+            
             Fleet.SupplyUse += FuelBurnRate;
             rb = gameObject.GetRequiredComponent<Rigidbody2D>();
         }
 
         private void OnDisable()
         {
-            Destroy(formationPoint);
+            Destroy(formation);
             Fleet.SupplyUse -= FuelBurnRate;
-            Fleet.RemoveShip(speedAndAccel);
+            Fleet.RemoveShip(speedAndAccel,formation);
         }
 
         private void Update()
         {
-            desiredVelocity = Fleet.DesiredVelocity + (Vector2)(formationPoint.transform.position - transform.position);
+            desiredVelocity = Fleet.DesiredVelocity + (Vector2)(formation.transform.position - transform.position);
         }
 
         private void FixedUpdate()
@@ -60,7 +72,15 @@ namespace DaleranGames.LastFleet
 
         private void OnMouseDown()
         {
-            
+            formation.MoveFormationSpot();
+            Fleet.ChangeFormation(formation, true);
+            formation.SpotPlaced += OnFormationChangeComplete;
+        }
+
+        void OnFormationChangeComplete()
+        {
+            Fleet.ChangeFormation(formation, false);
+            formation.SpotPlaced -= OnFormationChangeComplete;
         }
 
     }
