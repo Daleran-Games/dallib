@@ -22,8 +22,8 @@ TagManager:
   - Destructable
   - Scenery
   - Formation
-  - 
-  - 
+  - PlayerSensors
+  - EnemySensors
   - 
   - 
   - 
