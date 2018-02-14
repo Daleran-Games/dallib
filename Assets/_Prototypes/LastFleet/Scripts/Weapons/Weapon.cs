@@ -7,6 +7,79 @@ namespace DaleranGames.LastFleet
 {
     public class Weapon : MonoBehaviour
     {
+
+        [Header("Parameters")]
+        [SerializeField]
+        float roundsPerSecond;
+        float fireDelay;
+        float nextFire = 0f;
+        [SerializeField]
+        float damage;
+        [SerializeField]
+        float suppliesPerShot;
+
+        [SerializeField]
+        float range;
+        public float Range { get { return range; } }
+        [SerializeField]
+        float projectileSpeed;
+        public float ProjectileSpeed { get { return projectileSpeed; } }
+        [SerializeField]
+        float trackingSpeed;
+
+
+
+        [Header("Dependecies")]
+        [SerializeField]
+        GameObject projectile;
+        [SerializeField]
+        TargetingController targeting;
+        [SerializeField]
+        Supplies supplySystem;
+
+
+        [Header("Control")]
+        [SerializeField]
+        protected Vector2 aimPoint;
+        public virtual Vector2 AimPoint { get { return aimPoint; } }
+
+        void Start()
+        {
+            fireDelay = 1f / roundsPerSecond;
+        }
+
+        private void Update()
+        {
+            AimTurret(targeting.GetAimPoint(this));
+            if (targeting.ShouldFire(this))
+            {
+                FireRound();
+            }
+        }
+
+        void AimTurret(Vector2 aim)
+        {
+            aimPoint = aim;
+            float angle = Vector2.SignedAngle(transform.up, aim - (Vector2)transform.position);
+            angle = Mathf.Clamp(angle, -trackingSpeed*Time.deltaTime, trackingSpeed * Time.deltaTime);
+            transform.Rotate(0f, 0f, angle);
+        }
+
+        void FireRound()
+        {
+            if (Time.time > nextFire)
+            {
+                if (supplySystem == null || supplySystem.UseSupplies(suppliesPerShot))
+                {
+                    nextFire = Time.time + fireDelay;
+                    GameObject go = Instantiate(projectile, transform.position, transform.rotation);
+                    Projectile proj = go.GetComponent<Projectile>();
+                    proj.Initialize((Vector2)transform.up.normalized * projectileSpeed, damage, range);
+                }
+            }
+        }
+
+        /*
         [SerializeField]
         SensorSystem sensors;
 
@@ -33,11 +106,13 @@ namespace DaleranGames.LastFleet
         Supplies supplySystem;
 
         Rigidbody2D shipRB;
-
         Rigidbody2D target;
 
         [SerializeField]
         Vector2 aimPoint;
+
+        [SerializeField]
+        Vector2 projectileOffset = Vector2.zero;
 
         // Use this for initialization
         void Start()
@@ -78,7 +153,7 @@ namespace DaleranGames.LastFleet
                 transform.Set2DRotation(0, Space.Self);
         }
 
-        void FireRound(Vector2 projVelocity)
+        public void FireRound(Vector2 projVelocity)
         {
             if (Time.time > nextFire)
             {
@@ -92,7 +167,7 @@ namespace DaleranGames.LastFleet
                 }
             }
         }
-                     
+           */
 
     }
 }

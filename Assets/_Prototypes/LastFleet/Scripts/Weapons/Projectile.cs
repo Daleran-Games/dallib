@@ -9,9 +9,11 @@ namespace DaleranGames.LastFleet
 
 
         float damage;
-        float burnOutDistance = float.PositiveInfinity;
+        float range = float.PositiveInfinity;
 
         Vector3 firedPosition;
+
+        [SerializeField]
         Rigidbody2D rb;
 
         float distance;
@@ -19,10 +21,9 @@ namespace DaleranGames.LastFleet
 
         public void Initialize(Vector2 velocity,float damage, float range)
         {
-            rb = gameObject.GetRequiredComponent<Rigidbody2D>();
             firedPosition = transform.position;
             rb.velocity = velocity;
-            burnOutDistance = range;
+            this.range = range;
             this.damage = damage;
             initialized = true;
         }
@@ -33,7 +34,7 @@ namespace DaleranGames.LastFleet
             if (initialized)
             {
                 distance = Vector2.Distance(firedPosition, transform.position);
-                if (distance > burnOutDistance)
+                if (distance > range)
                     Destroy(gameObject);
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DaleranGames.LastFleet
 {
-    public class Ship : MonoBehaviour
+    public class FormationShip : MonoBehaviour
     {
         public Fleet Fleet;
 

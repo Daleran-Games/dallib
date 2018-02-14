@@ -13,7 +13,7 @@ namespace DaleranGames
         public Vector2Int DropAmount;
         public GameObject Drop;
 
-        public void OnObjectDestroyed()
+        public void DropLoot()
         {
             int dropAmount = Random.Int(DropAmount.x, DropAmount.y);
 

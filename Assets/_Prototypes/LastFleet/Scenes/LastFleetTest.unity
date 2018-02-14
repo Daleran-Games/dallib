@@ -350,7 +350,7 @@ Prefab:
     - target: {fileID: 20251024521281122, guid: 83798b1d41f862a4191fdc23416c9fa0,
         type: 2}
       propertyPath: orthographic size
-      value: 15
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 114383761386241922, guid: 83798b1d41f862a4191fdc23416c9fa0,
         type: 2}
@@ -377,7 +377,8 @@ Prefab:
       propertyPath: m_BackGroundColor.a
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114538656173979204, guid: 83798b1d41f862a4191fdc23416c9fa0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 83798b1d41f862a4191fdc23416c9fa0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &68172066
@@ -1743,6 +1744,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: a4454b39f0d42824e9ac11ddbd9f358b, type: 2}
+--- !u!114 &825884924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 825884921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6063f4df8528bea40868a7a63d166a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomStep: 256
+  min: 256
+  max: 2056
+  startZoom: 256
 --- !u!20 &825884929 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20251024521281122, guid: 83798b1d41f862a4191fdc23416c9fa0,
