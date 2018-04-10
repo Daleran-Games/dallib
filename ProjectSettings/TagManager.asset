@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Cursor3D
+  - MouseCursor
   layers:
   - Default
   - TransparentFX
@@ -14,16 +14,16 @@ TagManager:
   - UI
   - 
   - 
-  - Side1
-  - Side2
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - PlayerProjectiles
+  - Enemy
+  - EnemyProjectiles
+  - Drop
+  - Destructable
+  - Scenery
+  - Formation
+  - PlayerSensors
+  - EnemySensors
   - 
   - 
   - 
@@ -39,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1562630375
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 2115483969
     locked: 0
