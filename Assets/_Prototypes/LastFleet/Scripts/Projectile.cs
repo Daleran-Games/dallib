@@ -7,32 +7,35 @@ namespace DaleranGames.LastFleet
     public class Projectile : MonoBehaviour
     {
 
-        [SerializeField]
-        float velocity;
-        [SerializeField]
+
         float damage;
-        [SerializeField]
-        float burnOutDistance;
+        float burnOutDistance = float.PositiveInfinity;
 
         Vector3 firedPosition;
         Rigidbody2D rb;
 
         float distance;
+        bool initialized = false;
 
-        private void Start()
+        public void Initialize(Vector2 velocity,float damage, float range)
         {
             rb = gameObject.GetRequiredComponent<Rigidbody2D>();
             firedPosition = transform.position;
-            rb.velocity = rb.velocity + (Vector2)(transform.up * velocity);
+            rb.velocity = velocity;
+            burnOutDistance = range;
+            this.damage = damage;
+            initialized = true;
         }
 
         // Update is called once per frame
         void Update()
         {
-            distance = Vector2.Distance(firedPosition, transform.position);
-
-            if (distance > burnOutDistance)
-                Destroy(gameObject);
+            if (initialized)
+            {
+                distance = Vector2.Distance(firedPosition, transform.position);
+                if (distance > burnOutDistance)
+                    Destroy(gameObject);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -42,8 +45,9 @@ namespace DaleranGames.LastFleet
             if (otherCond != null)
             {
                 otherCond.DealDamage(damage);
-                Destroy(this);
+                Destroy(this.gameObject);
             }
+
         }
 
     }

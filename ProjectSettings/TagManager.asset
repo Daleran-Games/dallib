@@ -18,12 +18,12 @@ TagManager:
   - PlayerProjectiles
   - Enemy
   - EnemyProjectiles
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Drop
+  - Destructable
+  - Scenery
+  - Formation
+  - PlayerSensors
+  - EnemySensors
   - 
   - 
   - 
