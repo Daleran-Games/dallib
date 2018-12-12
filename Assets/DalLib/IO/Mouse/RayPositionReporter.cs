@@ -18,9 +18,13 @@ namespace DaleranGames.IO
         Plane cursorPlane; // plane on which the cursor move on in 3D space.
         Vector3 lastWorldPosition = Vector3.zero; // last successful raycasted world position for persepctive cameras
 
+        [Header("Positions")]
         [SerializeField]
         Vector3 worldPosition;
         public Vector3 WorldPosition { get { return worldPosition; } }
+        [SerializeField]
+        Vector3 canvasPosition;
+        public Vector3 CanvasPostion { get { return canvasPosition; } }
 
 
         bool isOrthographic = true;
@@ -42,6 +46,7 @@ namespace DaleranGames.IO
         void Update()
         {
             worldPosition = CalculateWorldPosition(transform.position);
+            canvasPosition = transform.position;
         }
 
         public Vector3 CalculateWorldPosition(Vector3 mousePosition)

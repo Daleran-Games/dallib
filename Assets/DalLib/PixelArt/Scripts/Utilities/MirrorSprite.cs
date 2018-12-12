@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DaleranGames
+namespace DaleranGames.PixelArt
 {
     public class MirrorSprite : MonoBehaviour
     {

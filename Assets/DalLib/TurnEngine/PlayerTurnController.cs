@@ -7,7 +7,7 @@ using DaleranGames.TileEngine;
 
 namespace DaleranGames.TurnEngine
 {
-    public class PlayerController : Actor
+    public class PlayerTurnController : Actor
     {
         MoveAction moveAction;
 
